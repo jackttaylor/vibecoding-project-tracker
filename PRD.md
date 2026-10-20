@@ -165,3 +165,32 @@ The hackathon is "done" when all 13 milestone tags are pushed to your repo and v
 ---
 
 *PRD version: hackathon-starter v1 · maintained by Prof. Dr. Ignacio Alvarez*
+
+
+## Functional Requirements
+- FR1: Users can create, edit and remove columns
+- FR2: Users can view the columns within a board
+- FR3: The board comes with basic columns (To Do, In progress, Review, Done)
+- FR4: Users can create tasks and add them to a column
+- FR5: Users can edit a task and select the tasks column
+- FR6: Users can drag and drop cards between columns
+- FR7: Users can view cards details and context
+- FR8: Cards show the difference between being a bug or feature
+- FR9: Cards show their owner with an email to contact
+- FR10: Cards change colour depending on their due date
+- FR11: Cards context are in markdown and displayed with formatting
+- FR12: Cards have a dropdown for their "AI tool"
+- FR13: Cards have a prefilled template
+- FR14: Cards have a "copy context" button which copies the context to clipboard
+- FR15: A pinned anchor link section above the board
+
+## Non-Functional Requirements
+- NFR1: Core actions like moving a card take no more than 2 interactions
+- NFR2: Meets WCAG 2.1 AA
+
+## Data Requirements
+| Entity | Attributes |
+|----------|----------|
+| User | id, name, email (unique) |
+| Task | id, title, description, type (feature/bug), status, assignee, due date, created date, position |
+| Column | id, title, position |

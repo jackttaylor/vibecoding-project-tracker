@@ -12,17 +12,17 @@
 
 One sentence that captures the feeling the tracker should leave you with.
 
-`<TODO>`
+`Vibrant with high-contrasting colours`
 
 Two or three references that capture the vibe (links to dribbble shots, screenshots of apps you admire, Pinterest boards — anything visual):
 
-- `<TODO>`
-- `<TODO>`
-- `<TODO>`
+- https://venngage-wordpress.s3.amazonaws.com/uploads/2022/11/virbant-color-pallette-1024x239.png
+- https://colorswall.com/images/palettes/pallete-warna-571177-colorswall.png
+- https://whoisaccessible.com/wp-content/uploads/2021/04/Example-of-keyboard-focus-on-Costco-website.png
 
 Anti-references — what we are explicitly **not** trying to look like:
 
-- `<TODO>`
+- https://whoisaccessible.com/wp-content/uploads/2021/04/Example-of-poor-color-contrast-on-the-PIWNICH-website.png
 
 ## 2. Color palette
 
@@ -32,12 +32,12 @@ These are the colors the build milestones will reference. Once chosen, paste the
 
 | Token | Hex | Where it shows up |
 |---|---|---|
-| `brand-primary` | `<TODO>` | Header, "+" button, focus rings |
-| `brand-accent` | `<TODO>` | Highlights, hover states, links |
-| `surface-page` | `<TODO>` | Page background |
-| `surface-card` | `<TODO>` | Card background |
-| `text-primary` | `<TODO>` | Body text |
-| `text-muted` | `<TODO>` | Captions, dates, counts |
+| `brand-primary` | `#FF4121` | Header, "+" button, focus rings |
+| `brand-accent` | `#D21AE8` | Highlights, hover states, links |
+| `surface-page` | `#FFFFFF` | Page background |
+| `surface-card` | `#FFFFFF` | Card background |
+| `text-primary` | `#000000` | Body text |
+| `text-muted` | `#454545` | Captions, dates, counts |
 
 ### Task type (M6 `tag-style`)
 
