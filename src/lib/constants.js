@@ -49,6 +49,7 @@ export const STORAGE_KEYS = {
   columns: 'vibetracker.columns',
   users: 'vibetracker.users',
   anchors: 'vibetracker.anchors',
+  filters: 'vibetracker.filters',
 };
 
 export function uid() {

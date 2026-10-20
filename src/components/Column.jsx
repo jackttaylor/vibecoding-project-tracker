@@ -17,6 +17,7 @@ export default function Column({
   onAddTask,
   onDragOverColumn,
   onDrop,
+  emptyText = 'Nothing to display.',
 }) {
   const [renaming, setRenaming] = useState(false);
   const [draft, setDraft] = useState(column.title);
@@ -98,7 +99,7 @@ export default function Column({
       <ol className="flex min-h-[120px] flex-1 flex-col gap-3 p-3" aria-label={`${column.title} tasks`}>
         {tasks.length === 0 ? (
           <li className="flex flex-1 items-center justify-center rounded-lg border border-gray-400 px-3 py-8 text-center text-body text-text-muted">
-            Nothing to display.
+            {emptyText}
           </li>
         ) : (
           tasks.map((t) => (

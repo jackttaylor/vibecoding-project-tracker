@@ -1,14 +1,16 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
-import { Plus, Search, Users } from 'lucide-react';
+import { Plus, Users } from 'lucide-react';
 import AnchorBoard from './components/AnchorBoard';
 import Column from './components/Column';
 import TaskModal from './components/TaskModal';
 import TeamModal from './components/TeamModal';
 import ConfirmDialog from './components/ConfirmDialog';
 import Toasts from './components/Toasts';
+import FilterBar, { DEFAULT_FILTERS, hasActiveFilters } from './components/FilterBar';
 import { Button, fieldClass } from './components/ui';
 import { useLocalStorage } from './lib/useLocalStorage';
 import { buildPromptContext, copyText } from './lib/prompt';
+import { dueState } from './lib/due';
 import {
   CONTEXT_TEMPLATE,
   DEFAULT_ANCHORS,
@@ -37,7 +39,7 @@ export default function App() {
   const [toasts, setToasts] = useState([]);
   const [announcement, setAnnouncement] = useState('');
   const [drag, setDrag] = useState(EMPTY_DRAG);
-  const [query, setQuery] = useState('');
+  const [filters, setFilters] = useLocalStorage(STORAGE_KEYS.filters, DEFAULT_FILTERS);
   const [addingColumn, setAddingColumn] = useState(false);
   const [newColumnTitle, setNewColumnTitle] = useState('');
   const dragRef = useRef(EMPTY_DRAG);
@@ -252,9 +254,23 @@ export default function App() {
   };
 
   // ---------- render ----------
-  const q = query.trim().toLowerCase();
-  const matches = (t) =>
-    !q || [t.title, t.description, t.context, userName(t.assignee)].some((s) => s && s.toLowerCase().includes(q));
+  const f = { ...DEFAULT_FILTERS, ...filters };
+  const q = f.query.trim().toLowerCase();
+  const filtersOn = hasActiveFilters(f);
+  const matches = (t) => {
+    if (q && ![t.title, t.description, t.context, userName(t.assignee)].some((s) => s && s.toLowerCase().includes(q))) return false;
+    if (f.owner === 'unassigned' ? t.assignee && users.some((u) => u.id === t.assignee) : f.owner !== 'any' && t.assignee !== f.owner)
+      return false;
+    if (f.type !== 'all' && t.type !== f.type) return false;
+    if (f.tool === 'none' ? t.contextTool : f.tool !== 'any' && t.contextTool !== f.tool) return false;
+    if (f.due !== 'any') {
+      const key = dueState(t, t.status === doneColumnId).key;
+      const want = { overdue: 'overdue', soon: 'warning', later: 'safe', none: 'none', done: 'neutral' }[f.due];
+      if (key !== want) return false;
+    }
+    return true;
+  };
+  const shownCount = tasks.filter(matches).length;
 
   const cardProps = (task) => ({
     columns: sortedColumns,
@@ -290,20 +306,6 @@ export default function App() {
             <h1 className="text-title font-semibold text-brand-primary">Kanban Board</h1>
             <p className="text-body text-text-muted">Tasks and the prompts behind them, in one place.</p>
           </div>
-          <div className="relative">
-            <label htmlFor="search" className="sr-only">
-              Search tasks
-            </label>
-            <Search size={16} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-text-muted" aria-hidden="true" />
-            <input
-              id="search"
-              type="search"
-              placeholder="Search tasks"
-              className={`${fieldClass} !w-60 pl-9`}
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-          </div>
           <Button onClick={() => setModal({ kind: 'team' })}>
             <Users size={16} aria-hidden="true" />
             Team
@@ -325,6 +327,7 @@ export default function App() {
             </h2>
             <p className="text-monospace text-text-muted">Drag cards between columns, or focus a card and press Alt + arrow keys.</p>
           </div>
+          <FilterBar filters={f} setFilters={setFilters} users={users} shown={shownCount} total={tasks.length} />
           <div id="board" tabIndex={-1} className="flex items-start gap-4 overflow-x-auto pb-4">
             {sortedColumns.map((col, i) => (
               <Column
@@ -333,6 +336,7 @@ export default function App() {
                 index={i}
                 columnCount={sortedColumns.length}
                 tasks={tasksIn(col.id).filter(matches)}
+                emptyText={filtersOn ? 'No tasks match your filters.' : 'Nothing to display.'}
                 isDoneColumn={col.id === doneColumnId}
                 dragState={drag}
                 cardProps={cardProps}
