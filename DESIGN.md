@@ -59,9 +59,9 @@ These are the colors the build milestones will reference. Once chosen, paste the
 
 | Role | Font | Why |
 |---|---|---|
-| Heading | `16` | `Recommended large font https://service-manual.ons.gov.uk/brand-guidelines/typography/accessible-text-formatting` |
-| Body | `14` | `Medium font size` |
-| Monospace (tags, badges, code) | `12` | `Minimum limit https://service-manual.ons.gov.uk/brand-guidelines/typography/accessible-text-formatting` |
+| Heading | `16 point` | `Recommended large font https://service-manual.ons.gov.uk/brand-guidelines/typography/accessible-text-formatting` |
+| Body | `14 point` | `Medium font size` |
+| Monospace (tags, badges, code) | `12 point` | `Minimum limit https://service-manual.ons.gov.uk/brand-guidelines/typography/accessible-text-formatting` |
 
 Suggested sizes (override only if the design demands it):
 
