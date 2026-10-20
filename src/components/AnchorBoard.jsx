@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BookOpen, ExternalLink, FileText, MonitorPlay, Pencil, Presentation } from 'lucide-react';
+import { BookOpen, CheckCircle2, CircleDashed, ExternalLink, FileText, MonitorPlay, Pencil, Presentation } from 'lucide-react';
 import { Button, IconButton, fieldClass } from './ui';
 
 const ICONS = { presentation: Presentation, demo: MonitorPlay, report: FileText, documentation: BookOpen };
@@ -22,27 +22,69 @@ function AnchorSlot({ anchor, onSave }) {
     setEditing(false);
   };
 
-  return (
-    <li className="flex min-w-0 flex-col gap-2 rounded-lg border border-gray-300 bg-surface-card p-3 shadow-sm">
-      <div className="flex items-center gap-2">
-        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-brand-primary text-black">
-          <Icon size={18} aria-hidden="true" />
+  const startEditing = () => {
+    setDraft(anchor.url || '');
+    setEditing(true);
+  };
+
+  // The whole slot body is one button: opens the link, or starts adding one.
+  const body = (
+    <>
+      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-brand-primary text-black">
+        <Icon size={18} aria-hidden="true" />
+      </span>
+      <span className="flex-1 truncate text-left text-body font-semibold">{anchor.label}</span>
+      {/* Link status — icon + text, never colour alone */}
+      {anchor.url ? (
+        <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-type-feature px-2 py-0.5 text-monospace font-semibold text-black">
+          <CheckCircle2 size={14} aria-hidden="true" />
+          Linked
+          <ExternalLink size={12} aria-hidden="true" />
         </span>
-        <h3 className="flex-1 text-body font-semibold">{anchor.label}</h3>
-        {!editing && (
-          <IconButton
-            label={`${anchor.url ? 'Edit' : 'Add'} ${anchor.label} link`}
-            onClick={() => {
-              setDraft(anchor.url || '');
-              setEditing(true);
-            }}
+      ) : (
+        <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-gray-400 bg-white px-2 py-0.5 text-monospace font-semibold text-text-muted">
+          <CircleDashed size={14} aria-hidden="true" />
+          Missing
+        </span>
+      )}
+    </>
+  );
+  const bodyClass =
+    'flex min-w-0 flex-1 items-center gap-2 rounded-md p-1 -m-1 hover:bg-brand-accent/10';
+
+  return (
+    <li className="flex min-w-0 flex-col gap-2 rounded-lg border border-gray-300 bg-surface-card p-3 shadow-sm hover:border-brand-accent">
+      <div className="flex items-center gap-2">
+        {anchor.url ? (
+          <a
+            href={anchor.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={bodyClass}
+            aria-label={`Open ${anchor.label} (opens in a new tab)`}
+            title={anchor.url}
           >
+            {body}
+          </a>
+        ) : (
+          <button
+            type="button"
+            className={bodyClass}
+            onClick={startEditing}
+            aria-label={`Add ${anchor.label} link, currently missing`}
+            disabled={editing}
+          >
+            {body}
+          </button>
+        )}
+        {anchor.url && !editing && (
+          <IconButton label={`Edit ${anchor.label} link`} onClick={startEditing}>
             <Pencil size={16} aria-hidden="true" />
           </IconButton>
         )}
       </div>
 
-      {editing ? (
+      {editing && (
         <form onSubmit={save} className="flex flex-col gap-2">
           <label htmlFor={inputId} className="sr-only">
             {anchor.label} link
@@ -65,19 +107,6 @@ function AnchorSlot({ anchor, onSave }) {
             </Button>
           </div>
         </form>
-      ) : anchor.url ? (
-        <a
-          href={anchor.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex min-w-0 items-center gap-1 text-body text-brand-accent-ink underline underline-offset-2 hover:text-black"
-        >
-          <span className="truncate">{anchor.url.replace(/^https?:\/\//, '')}</span>
-          <ExternalLink size={14} className="shrink-0" aria-hidden="true" />
-          <span className="sr-only">(opens in a new tab)</span>
-        </a>
-      ) : (
-        <p className="text-body text-text-muted">No link yet.</p>
       )}
     </li>
   );
