@@ -1,4 +1,36 @@
-# Vibecoding Project Tracker — Hackathon Starter
+# Kanban Board — Vibecoding Project Tracker
+
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # production build in dist/ (Vercel picks this up automatically)
+```
+
+## What's built (PRD → code)
+
+| Req | Where |
+|---|---|
+| FR1–3 Columns: default To Do / In Progress / Review / Done; add, rename, reorder, delete | `App.jsx` column ops, `components/Column.jsx` |
+| FR4–5 Create / edit tasks, choose column | `components/TaskModal.jsx`, "New Task" + per-column "Add task" |
+| FR6 Drag and drop between columns and within a column (dragged card lifts at 60% opacity) | `App.jsx` drag handlers |
+| FR7 / FR11 Card details + Markdown context with Write / Preview tabs (sanitised) | `TaskModal.jsx`, `components/Markdown.jsx`, `lib/markdown.js` |
+| FR8 Feature vs bug: colour stripe + icon + label | `components/TaskCard.jsx` |
+| FR9 Owner badge with mailto link; "Hand off to" dropdown + toast | `TaskCard.jsx`, `components/TeamModal.jsx` |
+| FR10 Due-date tint (safe / warning / overdue / done) | `lib/due.js` |
+| FR12 AI tool dropdown | `TaskModal.jsx` |
+| FR13 Prefilled context template (+ "Insert template") | `lib/constants.js` → `CONTEXT_TEMPLATE` |
+| FR14 Copy as Prompt Context (card + modal) | `lib/prompt.js` |
+| FR15 Pinned Deliverables anchor board | `components/AnchorBoard.jsx` |
+| NFR1 ≤2 interactions to move: "Move to" select on every card, or Alt + arrow keys | `TaskCard.jsx` |
+| NFR2 WCAG 2.1 AA: focus trap + Escape in dialogs, visible focus ring, skip link, live-region announcements, contrast-checked colours | axe-core scan: 0 violations |
+
+Data lives in localStorage under `vibetracker.tasks`, `vibetracker.columns`, `vibetracker.users`, `vibetracker.anchors`. To reset to the demo data, clear those keys.
+
+**Notes on design tokens.** `brand-accent` (#D21AE8) is only 4.1:1 on white, so link *text* uses an added `brand-accent-ink` (#A812BA, 7.3:1); the original accent is still used for hover fills and borders. Bug and overdue chips use white text, the others black, to keep every badge at 4.5:1 or above. Font sizes in `tailwind.config.js` were switched from pt to px to match DESIGN.md §3.
+
+---
+
+# Original starter notes
 
 You're forking this repo as the starting point for the **UXD Vibecoding Hackathon 2026**. The goal of the hackathon is to ship a Vibecoding Project Tracker in ~3 hours: a Kanban-style tool that tracks your vibecoding tasks and stores the prompts that produced them.
 
