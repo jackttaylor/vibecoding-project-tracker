@@ -43,25 +43,25 @@ These are the colors the build milestones will reference. Once chosen, paste the
 
 | Token | Hex | When used |
 |---|---|---|
-| `type-feature` | `<TODO>` | Cards tagged `feature` (accent stripe + icon) |
-| `type-bug` | `<TODO>` | Cards tagged `bug` (accent stripe + icon) |
+| `type-feature` | `#10B981` | Cards tagged `feature` (accent stripe + icon) |
+| `type-bug` | `#DC2626` | Cards tagged `bug` (accent stripe + icon) |
 
 ### Due-date states (M8 `due-tint`)
 
 | Token | Hex | When used |
 |---|---|---|
-| `due-safe` | `<TODO>` | More than 2 days out |
-| `due-warning` | `<TODO>` | Less than 24 hours |
-| `due-overdue` | `<TODO>` | Past due |
-| `due-neutral` | `<TODO>` | Done (overrides date) |
+| `due-safe` | `#4D80B3` | More than 2 days out |
+| `due-warning` | `#B3804D` | Less than 24 hours |
+| `due-overdue` | `#B34D4D` | Past due |
+| `due-neutral` | `#4DB380` | Done (overrides date) |
 
 ## 3. Typography
 
 | Role | Font | Why |
 |---|---|---|
-| Heading | `<TODO>` | `<TODO one sentence>` |
-| Body | `<TODO>` | `<TODO one sentence>` |
-| Monospace (tags, badges, code) | `<TODO>` | `<TODO one sentence>` |
+| Heading | `16` | `Recommended large font https://service-manual.ons.gov.uk/brand-guidelines/typography/accessible-text-formatting` |
+| Body | `14` | `Medium font size` |
+| Monospace (tags, badges, code) | `12` | `Minimum limit https://service-manual.ons.gov.uk/brand-guidelines/typography/accessible-text-formatting` |
 
 Suggested sizes (override only if the design demands it):
 
@@ -75,11 +75,11 @@ Suggested sizes (override only if the design demands it):
 
 One short sentence per element. These set the tone for the build phase — Person A's modal and Person B's anchor board should both feel like they came from this doc.
 
-- **Cards:** `<TODO>` (e.g. "Light, almost weightless; the only weight is from a 1px border, no shadow except on hover.")
-- **Buttons:** `<TODO>` (e.g. "Solid fill, no gradient, generous padding, rounded-md.")
-- **Modal:** `<TODO>` (e.g. "Centered, max-width-md, slate-900 backdrop at 50% opacity.")
-- **Empty states:** `<TODO>` (e.g. "Dashed border, muted text, never sad.")
-- **Drag affordance (if used):** `<TODO>` (e.g. "None — we use a status dropdown.")
+- **Cards:** `white card on white background with 1px rounded grey solid border with soft shadows` (e.g. "Light, almost weightless; the only weight is from a 1px border, no shadow except on hover.")
+- **Buttons:** `rounded brand-primary fill with black text` (e.g. "Solid fill, no gradient, generous padding, rounded-md.")
+- **Modal:** `50% width, 70% height, centered with full opacity ` (e.g. "Centered, max-width-md, slate-900 backdrop at 50% opacity.")
+- **Empty states:** `1px grey solid border with muted text` (e.g. "Dashed border, muted text, never sad.")
+- **Drag affordance (if used):** `card is lifted with 60% opacity` (e.g. "None — we use a status dropdown.")
 
 ## 5. Voice / microcopy
 
@@ -87,18 +87,18 @@ Three lines of microcopy that capture the tone of the product. Keep it short —
 
 | Where | Text |
 |---|---|
-| "+" button label | `<TODO>` (e.g. "+ Task" or "Add task" or "New") |
-| Empty column placeholder | `<TODO>` (e.g. "Nothing here yet — keep going.") |
-| Toast after "Copy as Prompt Context" | `<TODO>` (e.g. "Copied. Now paste it into the AI.") |
-| Confirm-delete message | `<TODO>` (e.g. "Delete this task? You can't undo.") |
-| Handoff toast (M7 `task-owner`) | `<TODO>` (e.g. "Handed off to {name}. They've got it.") |
-
+| "+" button label | `New Task` (e.g. "+ Task" or "Add task" or "New") |
+| Empty column placeholder | `Nothing to display.` (e.g. "Nothing here yet — keep going.") |
+| Toast after "Copy as Prompt Context" | `Context copied.` (e.g. "Copied. Now paste it into the AI.") |
+| Confirm-delete message | `Confirm deletion of task.` (e.g. "Delete this task? You can't undo.") |
+| Handoff toast (M7 `task-owner`) | `Task asigned to {name}` (e.g. "Handed off to {name}. They've got it.") |
+s
 ## 6. Logo / wordmark
 
 The tracker probably doesn't need a logo, but it does need a name and a wordmark style.
 
-- **Product name:** `<TODO>` (match PRD §11 team identity)
-- **Wordmark style:** `<TODO>` (e.g. "Just the name in the heading font, brand-primary color, no icon.")
+- **Product name:** `Kanban Board` (match PRD §11 team identity)
+- **Wordmark style:** `A simple kanban board` (e.g. "Just the name in the heading font, brand-primary color, no icon.")
 
 ## 7. Out of scope (this hackathon)
 
