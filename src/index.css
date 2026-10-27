@@ -14,7 +14,7 @@ body {
 }
 
 *:focus-visible {
-  outline: 3px solid theme('colors.brand-primary');
+  outline: 3px solid theme('colors.brand.primary');
   outline-offset: 2px;
   border-radius: 4px;
 }
