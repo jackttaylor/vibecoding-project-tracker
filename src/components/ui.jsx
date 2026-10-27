@@ -4,10 +4,9 @@ const base =
   'inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-body font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50';
 
 const variants = {
-  // DESIGN.md §4: rounded brand-primary fill with black text (6.0:1 contrast).
-  primary: 'bg-brand-primary text-black hover:bg-[#ff6a50] border border-brand-primary',
+  primary: 'bg-brand-primary text-white hover:bg-brand-accent/10 border border-brand-primary',
   secondary: 'bg-white text-black border border-gray-400 hover:border-brand-accent hover:bg-brand-accent/10',
-  danger: 'bg-white text-[#B91C1C] border border-[#B91C1C] hover:bg-[#B91C1C] hover:text-white',
+  danger: 'bg-white text-danger border border-danger hover:bg-danger hover:text-white',
   ghost: 'bg-transparent text-black hover:bg-brand-accent/10 border border-transparent',
 };
 

@@ -28,6 +28,7 @@ export default {
           overdue: '#B34D4D',
           neutral: '#4DB380',
         },
+        danger: '#B91C1C',
       },
       fontFamily: {
         sans: ['Arial', 'Helvetica', 'sans-serif'],
