@@ -26,8 +26,6 @@ npm run build    # production build in dist/ (Vercel picks this up automatically
 
 Data lives in localStorage under `vibetracker.tasks`, `vibetracker.columns`, `vibetracker.users`, `vibetracker.anchors`. To reset to the demo data, clear those keys.
 
-**Notes on design tokens.** `brand-accent` (#D21AE8) is only 4.1:1 on white, so link *text* uses an added `brand-accent-ink` (#A812BA, 7.3:1); the original accent is still used for hover fills and borders. Bug and overdue chips use white text, the others black, to keep every badge at 4.5:1 or above. Font sizes in `tailwind.config.js` were switched from pt to px to match DESIGN.md §3.
-
 ---
 
 # Original starter notes

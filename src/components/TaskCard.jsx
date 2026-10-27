@@ -116,7 +116,7 @@ export default function TaskCard({
             {owner && (
               <a
                 href={`mailto:${owner.email}?subject=${encodeURIComponent(`Re: ${task.title}`)}`}
-                className="flex min-w-0 items-center gap-1 text-monospace text-brand-accent-ink underline underline-offset-2 hover:text-black"
+                className="flex min-w-0 items-center gap-1 text-monospace text-brand-accent underline underline-offset-2 hover:text-black"
               >
                 <Mail size={12} className="shrink-0" aria-hidden="true" />
                 <span className="truncate">{owner.email}</span>

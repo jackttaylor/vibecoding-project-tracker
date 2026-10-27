@@ -7,11 +7,8 @@ export default {
     extend: {
       colors: {
         brand: {
-          primary: '#FF4121',
-          accent: '#D21AE8',
-          // Darker accent for link TEXT — #D21AE8 on white is 4.1:1 (fails AA),
-          // this shade is 7.3:1. Use brand-accent for fills/borders, accent-ink for text.
-          'accent-ink': '#A812BA',
+          primary: '#622C68',
+          accent: '#A812BA',
         },
         surface: {
           page: '#FFFFFF',
