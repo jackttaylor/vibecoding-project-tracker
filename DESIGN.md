@@ -32,7 +32,7 @@ These are the colors the build milestones will reference. Once chosen, paste the
 
 | Token | Hex | Where it shows up |
 |---|---|---|
-| `brand-primary` | `#622C68` | Header, "+" button, focus rings |
+| `brand-primary` | `#8458C6` | Header, "+" button, focus rings |
 | `brand-accent` | `#A812BA` | Highlights, hover states, links |
 | `surface-page` | `#FFFFFF` | Page background |
 | `surface-card` | `#FFFFFF` | Card background |

@@ -7,7 +7,7 @@ export default {
     extend: {
       colors: {
         brand: {
-          primary: '#622C68',
+          primary: '#8458C6',
           accent: '#A812BA',
         },
         surface: {
